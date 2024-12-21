@@ -1,7 +1,5 @@
-import { useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
-    const error = useRouteError();
 
     return (
         <>
@@ -10,7 +8,7 @@ const ErrorPage = () => {
                     <div>
                         <p className="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Error 404</p>
                         <h1 className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-left text-gray-900 md:text-4xl">Oops! The page you're looking for isn't here.</h1>
-                        <p className="mb-5 text-base text-left text-gray-800 md:text-xl"><b>Status:</b> {error.statusText || error.message}</p>
+                        {/* <p className="mb-5 text-base text-left text-gray-800 md:text-xl"><b>Status:</b> {error.statusText || error.message}</p> */}
                         <a href="/" className="w-full mb-2 btn btn-lg btn-light sm:w-auto sm:mb-0">Back to homepage</a>
                     </div>
                     <div>
