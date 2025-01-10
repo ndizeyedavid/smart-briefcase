@@ -43,8 +43,8 @@ const Map = () => {
 
         getMyLocation();
     }, [])
-    const position = [myLat, myLong]
-    // const position = [-2.607845, 29.73475]
+    const position = [-1.9506256778082718, 30.092868322895246]
+
 
     return (
         <>
