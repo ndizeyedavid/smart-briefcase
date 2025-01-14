@@ -16,20 +16,20 @@ const Setting = () => {
             }
         };
 
-        setInterval(fetchSetting, 1000);
+        // setInterval(fetchSetting, 1000);
     }, []);
 
-    async function updateSettings(state) {
-        try {
-            const response = await axios.put(`${import.meta.env.VITE_HOST_ADDRESS}/settings/update`, { notification: state ? 1 : 0 });
-            const out = response.data;
-            // Handle the response as needed
-            // console.log(out);
-            toast.success('Settings updated successfully');
-        } catch (error) {
-            console.error("Error updating settings:", error.response.data);
-        }
-    }
+    // async function updateSettings(state) {
+    //     try {
+    //         const response = await axios.put(`${import.meta.env.VITE_HOST_ADDRESS}/settings/update`, { notification: state ? 1 : 0 });
+    //         const out = response.data;
+    //         // Handle the response as needed
+    //         // console.log(out);
+    //         toast.success('Settings updated successfully');
+    //     } catch (error) {
+    //         console.error("Error updating settings:", error.response.data);
+    //     }
+    // }
 
     async function resetNotifications() {
         const toastId = toast.loading('Resetting Notifications...');
@@ -67,23 +67,6 @@ const Setting = () => {
             <Toaster />
 
             <section className="flex flex-col h-full gap-16 p-6 overflow-y-auto text-gray-900">
-                <fieldset className="relative grid grid-cols-4 gap-6 p-6 mt-5 rounded-md shadow-sm bg-gray-50">
-
-                    <div className="space-y-2 col-span-full lg:col-span-1">
-                        <p className="font-medium">Notifications</p>
-                        <p className="text-xs">Control how the notifications will appear</p>
-                    </div>
-                    <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-
-                        <div className="flex items-center gap-14 col-span-full">
-                            <label htmlFor="address" className="text-sm">Receive all notifications via E-mail</label>
-                            {pushNotifications == 'true' ? <input type="checkbox" onChange={() => updateSettings(false)} className="toggle" defaultChecked /> : <input type="checkbox" onChange={() => updateSettings(true)} className="toggle" />}
-                        </div>
-
-                    </div>
-
-                </fieldset>
-
 
                 <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
                     <div className="space-y-2 col-span-full lg:col-span-1">

@@ -5,11 +5,14 @@ import Header from '../components/Header'
 import Container from '../components/Container'
 import AnalyticsGraph from '../components/AnalyticsGraph'
 import toast, { Toaster } from 'react-hot-toast';
+import WarningPrompt from '../components/WarningPrompt'
 
 const Home = () => {
     const [isRemoteBriefcaseOpen, setIsRemoteBriefcaseOpen] = useState(false)
     const [statusText, setStatusText] = useState("Closed")
     const [graphData, setGraphData] = useState([]);
+    const [failedAttempt, setFailedAttempt] = useState([]);
+    
 
     function updateBriefcaseState() {
         const toastId = toast.loading(`${isRemoteBriefcaseOpen ? "closing" : "opening"} briefcase...`);
@@ -38,19 +41,40 @@ const Home = () => {
         }
 
         function getGraphData() {
-            axios.get(import.meta.env.VITE_HOST_ADDRESS + '/history/view/all').then(res => {
+            axios.get(import.meta.env.VITE_HOST_ADDRESS  + '/history/view/all').then(res => {
                 const data = res.data.data
                 setGraphData(data);
             }).catch(err => {
                 setGraphData("Failed to fetch data")
             })
         }
+
+        function fetchFailedAttempts(){
+            // console.log("Fetching failed attempts")
+            axios.get(import.meta.env.VITE_HOST_ADDRESS + '/notifications/failed/today').then(res=>{
+                const data = res.data.result;
+                // const new_cont = data[data.length - 1]
+                
+                console.log(data);
+                setFailedAttempt(data)
+            }).catch(err=>{
+                console.log("An Error Occured", err)
+            })
+        }
+
+        fetchFailedAttempts()
         getGraphData();
         setInterval(getBriefcaseStatus, 1000)
     }, []);
 
     return (
         <>
+        {failedAttempt.length == 0 ? 
+            null 
+            : 
+            <WarningPrompt details={failedAttempt} />
+        }
+        
             <Toaster />
 
             {/* <SideBar /> */}

@@ -21,10 +21,10 @@ const Header = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[9999999999999] mt-3 w-52 p-2 shadow">
-                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/home">Home</NavLink></li>
                         <li><NavLink to="/track">Track</NavLink></li>
                         <li><NavLink to="/history">History</NavLink></li>
-                        <li><NavLink to="/settings">Settings</NavLink></li>
+                        <li><NavLink to="/settings">Notifications</NavLink></li>
                         <li><NavLink to="/documentation">Documentation</NavLink></li>
                     </ul>
                 </div>

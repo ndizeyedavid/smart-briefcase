@@ -43,8 +43,8 @@ const Map = () => {
 
         getMyLocation();
     }, [])
-    const position = [-1.9506256778082718, 30.092868322895246]
-
+    const position = [-1.9506042325704938, 30.092964882416826]
+    // const position = [-2.607845, 29.73475]
 
     return (
         <>
@@ -54,7 +54,7 @@ const Map = () => {
                     <MapContainer center={position} zoom={15} scrollWheelZoom={true}>
                         <TileLayer attribution='Briefcase Tracker' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <Marker position={position}> <Popup> Briefcase located in this range. </Popup> </Marker>
-                        <Circle center={position} radius={1000} pathOptions={{ color: '#077bff' }} />
+                        <Circle center={position} radius={50} pathOptions={{ color: '#077bff' }} />
                     </MapContainer>
                 </div>
 

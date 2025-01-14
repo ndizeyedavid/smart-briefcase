@@ -23,7 +23,7 @@ const Login = ({ onComplete }) => {
 
         if (uname == import.meta.env.VITE_USERNAME && pswd == import.meta.env.VITE_PASSWORD) {
             toast.success('Login successful', { id: toastId });
-            navigate("/");
+            navigate("/home");
         } else {
             toast.error('Invalid credentials', { id: toastId });
         }
